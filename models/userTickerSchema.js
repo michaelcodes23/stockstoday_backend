@@ -4,7 +4,8 @@ const userTickerSchema = new mongoose.Schema({
     name: String,
     email: String,
     ticker: String, 
-    tickerarray: [String],
+    investmentAmount: Number,
+    tickerarray: Array,
 }, {timestamps: true});
 
 
