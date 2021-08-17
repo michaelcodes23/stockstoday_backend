@@ -166,6 +166,16 @@ router.post('/savefavorites', async (req, res) => {
   res.send(`Created / Updated profile for ${req.body.email}`)
 } )
 
+router.patch('/:favId', async (req, res)=>{
+  // const favId = req.params.favId
+  // const deleteFavStock = await userStocks.findOne({_id: "6114613b7d5cef0fab80dc09"})
+  // console.log(deleteFavStock)
+  // await userStocks.findByIdAndUpdate({_id:"6114613b7d5cef0fab80dc09"},{$pull:{tickerarray: "NFLX"}},{useFindAndModify: false})
+  // console.log(deleteFavStock)
+  const patchFavStock = await userStocks.findByIdAndUpdate({_id: req.params.favId},
+  {$pull:{tickerarray: req.body.ticker}}, {useFindAndModify: false})
+  res.json(patchFavStock)
+})
 
 module.exports = router;
 
