@@ -33,7 +33,8 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)
 });
-mongoose.connect(URI || 'mongodb://localhost:27017/stocks_today', { useNewUrlParser: true, useUnifiedTopology: true });
+//|| 'mongodb://localhost:27017/stocks_today'
+mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connection.once('open', () => {
     console.log('connected to mongo')
 })
