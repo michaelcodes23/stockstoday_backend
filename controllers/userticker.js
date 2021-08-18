@@ -40,33 +40,33 @@ let search_array = []
     })
   })
   //get all data in userStocks
-  router.get('/alldata', (req, res)=>{
+  router.get('/', (req, res)=>{
     userStocks.find({}, (error, data)=>{
       res.json(data)
     })
   })
   //Respond to front end search requests
 
-  router.route('/')
-    .post((req, res) => receiveSearch(req, res))
-    .get((req, res) => sendSearchData(req,res))
+  // router.route('/')
+  //   .post((req, res) => receiveSearch(req, res))
+  //   .get((req, res) => sendSearchData(req,res))
 
-  receiveSearch = (req, res) => {
-    const getSearch = async (query) =>{
-      const response = await fetch(
-          `${url}${api_search}${query}${limit}&apikey=${key}`
-      )
-      const data = await response.json()
-      console.log(data)
-      search_array = data
-      console.log('Testing search_array')
-      console.log(search_array)
+  // receiveSearch = (req, res) => {
+  //   const getSearch = async (query) =>{
+  //     const response = await fetch(
+  //         `${url}${api_search}${query}${limit}&apikey=${key}`
+  //     )
+  //     const data = await response.json()
+  //     console.log(data)
+  //     search_array = data
+  //     console.log('Testing search_array')
+  //     console.log(search_array)
 
-    }
-    getSearch(req.body.search_query)
+  //   }
+  //   getSearch(req.body.search_query)
 
-    res.json(search_array) //look up how to send back, send to /getsearch
-  }
+  //   res.json(search_array) //look up how to send back, send to /getsearch
+  // }
   sendSearchData = (req, res) => {
     //Attempt on not allowing the front end to query the same result after the first try, bug not fixed
     const waitSearch = async (query) => {
